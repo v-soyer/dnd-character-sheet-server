@@ -1,4 +1,4 @@
-import { Controller, Get, ParseIntPipe, Query } from '@nestjs/common';
+import { Controller, DefaultValuePipe, Get, ParseIntPipe, Query } from '@nestjs/common';
 import { RollService } from './roll.service';
 
 @Controller('roll')
@@ -7,22 +7,22 @@ export class RollController {
 
     @Get()
     rollDice(
-        @Query('dice', ParseIntPipe) dice: number,
-        @Query('bonus', ParseIntPipe) bonus: number) {
+        @Query('dice', new DefaultValuePipe(20), ParseIntPipe) dice: number,
+        @Query('bonus', new DefaultValuePipe(0), ParseIntPipe) bonus: number) {
         return this.rollService.rollDice(dice, bonus);
     }
 
     @Get('/advantage')
     rollAdvantage(
-        @Query('dice', ParseIntPipe) dice: number,
-        @Query('bonus', ParseIntPipe) bonus: number) {
+        @Query('dice', new DefaultValuePipe(20), ParseIntPipe) dice: number,
+        @Query('bonus', new DefaultValuePipe(0), ParseIntPipe) bonus: number) {
         return this.rollService.rollAdvantage(dice, bonus);
     }
 
     @Get('/disadvantage')
     rollDisdvantage(
-        @Query('dice', ParseIntPipe) dice: number,
-        @Query('bonus', ParseIntPipe) bonus: number) {
+        @Query('dice', new DefaultValuePipe(20), ParseIntPipe) dice: number,
+        @Query('bonus', new DefaultValuePipe(0), ParseIntPipe) bonus: number) {
         return this.rollService.rollDisadvantage(dice, bonus);
     }
 
