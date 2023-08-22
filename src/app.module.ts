@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 
 import * as Joi from 'joi';
 import { RollModule } from './roll/roll.module';
+import { CharacterModule } from './character/character.module';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { RollModule } from './roll/roll.module';
     AuthModule,
     UsersModule,
     RollModule,
+    CharacterModule,
   ],
   controllers: [],
   providers: [],
